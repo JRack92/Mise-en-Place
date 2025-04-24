@@ -1,7 +1,7 @@
 using UnityEngine;
 using MiseEnPlace.Core.Interfaces;
 
-namespace MiseEnPlace.Core.Employee
+namespace MiseEnPlace.Core.Employees
 {
     public class Waiter : Entities.Employee
     {

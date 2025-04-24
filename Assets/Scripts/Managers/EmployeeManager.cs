@@ -5,7 +5,6 @@ namespace MiseEnPlace.Core.Managers
 {
     public class EmployeeManager : MonoBehaviour
     {
-
         private EmployeeManager() { }
 
         public static EmployeeManager Instance { get; private set; }

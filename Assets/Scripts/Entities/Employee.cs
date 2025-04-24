@@ -1,5 +1,5 @@
 using UnityEngine;
-using MiseEnPlace.Core.Employee;
+using MiseEnPlace.Core.Employees;
 using MiseEnPlace.Core.Interfaces;
 
 namespace MiseEnPlace.Core.Entities
