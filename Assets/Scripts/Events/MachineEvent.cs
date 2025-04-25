@@ -1,4 +1,3 @@
-using MiseEnPlace.Core.Interfaces;
 using UnityEngine;
 
 namespace MiseEnPlace.Core.Events

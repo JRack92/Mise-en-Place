@@ -1,16 +1,9 @@
 using UnityEngine;
 
-public class ReputationHUD : MonoBehaviour
+namespace MiseEnPlace.Core.UI
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class ReputationHUD : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

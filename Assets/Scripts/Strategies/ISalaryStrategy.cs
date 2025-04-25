@@ -1,4 +1,4 @@
-namespace MiseEnPlace.Core.Interfaces
+namespace MiseEnPlace.Core.Strategy
 {
     public interface ISalaryStrategy
     {

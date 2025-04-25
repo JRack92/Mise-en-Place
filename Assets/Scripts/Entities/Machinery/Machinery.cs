@@ -1,7 +1,4 @@
 ﻿using MiseEnPlace.Core.Interfaces;
-using MiseEnPlace.Core.Managers;
-using System;
-using System.Collections;
 using UnityEngine;
 
 namespace MiseEnPlace.Core.Entities

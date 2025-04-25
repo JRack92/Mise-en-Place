@@ -1,10 +1,9 @@
-using UnityEngine;
 using MiseEnPlace.Core.Interfaces;
 using MiseEnPlace.Core.Strategy;
 
 namespace MiseEnPlace.Core.Entities
 {
-    public class Cook : Entities.Employee
+    public class Cook : Employee
     {
         // Constructor to initialize the Cook object with name, level, salary strategy, and efficiency strategy
         public Cook(string name, ExperienceLevel level, ISalaryStrategy salaryStrat, IEfficiencyStrategy efficiencyStrat)

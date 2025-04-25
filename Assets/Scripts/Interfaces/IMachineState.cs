@@ -4,6 +4,6 @@ namespace MiseEnPlace.Core.Interfaces
 {
     public interface IMachineState
     {
-        void Handle(Entities.Machinery m);
+        void Handle(Machinery m);
     }
 }

@@ -1,16 +1,9 @@
 using UnityEngine;
 
-public class SaveLoadService : MonoBehaviour
+namespace MiseEnPlace.Core.Infrastructure
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class SaveLoadService : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

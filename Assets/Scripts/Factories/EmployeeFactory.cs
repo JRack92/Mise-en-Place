@@ -4,7 +4,6 @@ using MiseEnPlace.Core.Strategy;
 using MiseEnPlace.Core.Enum;
 using UnityEngine;
 
-
 namespace MiseEnPlace.Core.Factories
 {
     public class EmployeeFactory : MonoBehaviour

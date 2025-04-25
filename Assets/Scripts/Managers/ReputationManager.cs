@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace MiseEnPlace.Core.Managers
 {
     public class ReputationManager : MonoBehaviour
     {
-
         private ReputationManager() { }
 
         public static ReputationManager Instance { get; private set; }

@@ -1,16 +1,9 @@
 using UnityEngine;
 
-public class MachineryPanel : MonoBehaviour
+namespace MiseEnPlace.Core.UI
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class MachineryPanel : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

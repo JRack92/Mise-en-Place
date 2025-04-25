@@ -1,16 +1,9 @@
 using UnityEngine;
 
-public class HighSalaryStrategy : MonoBehaviour
+namespace MiseEnPlace.Core.Strategy
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class HighSalaryStrategy : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

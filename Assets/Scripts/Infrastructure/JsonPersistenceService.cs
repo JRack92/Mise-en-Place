@@ -1,16 +1,9 @@
 using UnityEngine;
 
-public class JsonPersistenceService : MonoBehaviour
+namespace MiseEnPlace.Core.Infrastructure
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class JsonPersistenceService : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

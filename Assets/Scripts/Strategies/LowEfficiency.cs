@@ -1,9 +1,6 @@
 using UnityEngine;
-using MiseEnPlace.Core.Interfaces;
-using MiseEnPlace.Core.Strategy;
 
-
-namespace MiseEnPlace.Core.Entities
+namespace MiseEnPlace.Core.Strategy
 {
     public class LowEfficiency : MonoBehaviour, IEfficiencyStrategy
     {
