@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace MiseEnPlace.Core.Machinery.States
+namespace MiseEnPlace.Core.Entities
 {
     public class BrokenState : MonoBehaviour, IMachineState
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
-using MiseEnPlace.Core.Employees;
 using MiseEnPlace.Core.Interfaces;
+using MiseEnPlace.Core.Strategy;
 
 namespace MiseEnPlace.Core.Entities
 {

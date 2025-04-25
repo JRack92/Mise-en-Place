@@ -1,7 +1,8 @@
 using UnityEngine;
 using MiseEnPlace.Core.Interfaces;
+using MiseEnPlace.Core.Strategy;
 
-namespace MiseEnPlace.Core.Employees
+namespace MiseEnPlace.Core.Entities
 {
     public class Cook : Entities.Employee
     {

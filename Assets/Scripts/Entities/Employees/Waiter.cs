@@ -1,9 +1,10 @@
 using UnityEngine;
 using MiseEnPlace.Core.Interfaces;
+using MiseEnPlace.Core.Strategy;
 
-namespace MiseEnPlace.Core.Employees
+namespace MiseEnPlace.Core.Entities
 {
-    public class Waiter : Entities.Employee
+    public class Waiter : Employee
     {
         // Constructor to initialize the Waiter object with name, level, salary strategy, and efficiency strategy
         public Waiter(string name, ExperienceLevel level, ISalaryStrategy salaryStrat, IEfficiencyStrategy efficiencyStrat)

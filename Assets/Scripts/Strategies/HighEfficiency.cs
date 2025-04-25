@@ -1,7 +1,7 @@
 using UnityEngine;
-using MiseEnPlace.Core.Interfaces;
+using MiseEnPlace.Core.Strategy;
 
-namespace MiseEnPlace.Core.Employees.Efficiency
+namespace MiseEnPlace.Core.Entities
 {
     public class HighEfficiency : MonoBehaviour, IEfficiencyStrategy
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MiseEnPlace.Core.Employees
+namespace MiseEnPlace.Core.Entities
 {
     public class ExperienceLevel : MonoBehaviour
     {
