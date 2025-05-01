@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace MiseEnPlace.Systems
 {
-    public class MachineSystem : MonoBehaviour
+    public class MachineSystem : GSystem
     {
         private float hoursAccumulator = 0f;
 

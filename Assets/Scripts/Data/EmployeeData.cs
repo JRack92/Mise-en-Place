@@ -1,6 +1,5 @@
 using System;
-using UnityEngine;
-using MiseEnPlace.Systems;
+using MiseEnPlace.Utilities;
 
 namespace MiseEnPlace.Data
 {
@@ -12,6 +11,8 @@ namespace MiseEnPlace.Data
         public string id;
         public EmployeeRole role;
         public EmployeeLevel level;
+        public bool isSaboteur = false;  // Indica si el empleado es un saboteador
+        public float sabotageChance = 0.05f; // Probabilidad base de sabotaje por hora
 
         public float GetSalary()
         {

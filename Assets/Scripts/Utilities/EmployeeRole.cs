@@ -1,5 +1,5 @@
 
-namespace MiseEnPlace.Systems
+namespace MiseEnPlace.Utilities
 {
     public enum EmployeeRole
     {
