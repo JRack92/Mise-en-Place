@@ -7,12 +7,11 @@ namespace MiseEnPlace.Core
 {
     public class GameManager : MonoBehaviour
     {
-        private EmployeeSystem _employeeSystem;
-        private MachineSystem _machineSystem;
-        private SabotageSystem _sabotageSystem;
-
         public static GameManager Instance { get; private set; }
 
+        public EmployeeSystem EmployeeSystem { get; private set; }
+        public MachineSystem MachineSystem { get; private set; }
+        public SabotageSystem SabotageSystem { get; private set; }
         public GameState State { get; private set; }
 
         void Awake()
@@ -36,9 +35,9 @@ namespace MiseEnPlace.Core
 
         private void AddSystems()
         {
-            _employeeSystem = gameObject.AddComponent<EmployeeSystem>();
-            _machineSystem = gameObject.AddComponent<MachineSystem>();
-            _sabotageSystem = gameObject.AddComponent<SabotageSystem>();
+            EmployeeSystem = gameObject.AddComponent<EmployeeSystem>();
+            MachineSystem = gameObject.AddComponent<MachineSystem>();
+            SabotageSystem = gameObject.AddComponent<SabotageSystem>();
         }
 
         void OnApplicationQuit()

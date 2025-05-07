@@ -1,5 +1,8 @@
 using MiseEnPlace.Core;
+using MiseEnPlace.Data;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MiseEnPlace.Systems
 {
@@ -10,9 +13,9 @@ namespace MiseEnPlace.Systems
         void Update()
         {
             // TODO: check machine failure based on usage and employee levels
-            var state = GameManager.Instance.State;
+            GameState state = GameManager.Instance.State;
             if (state.machines.Count == 0) return;
-            var machine = state.machines[0];
+            MachineData machine = state.machines[0];
             if (!machine.isFunctional) return;
 
             // Acumular horas de uso
@@ -23,15 +26,22 @@ namespace MiseEnPlace.Systems
                 hoursAccumulator = 0f;
 
                 // Calcular probabilidad de fallo
-                // Ajusta failRate: base - (nivelEmpleado-1)*0.01 + usageHours*0.0005
                 int level = state.employees.Count > 0 ? (int)state.employees[0].level : 1;
+                // Ajusta failRate: base - (nivelEmpleado-1)*0.01 + usageHours*0.0005
                 float failRate = machine.baseFailRate - (level - 1) * 0.01f + machine.usageHours * 0.0005f;
                 if (Random.value < failRate)
                 {
                     machine.isFunctional = false;
-                    Debug.Log("Machine " + machine.id + " ha fallado.");
                     // Reducir reputación
                     state.reputation = Mathf.Max(0, state.reputation - 5);
+                    Debug.Log("Machine " + machine.id + " ha fallado.");
+
+                    // Notify sabotage logic if applicable
+                    EmployeeData saboteur = state.employees.FirstOrDefault(e => e.isSaboteur);
+                    if (saboteur != null)
+                    {
+                        GameManager.Instance.EmployeeSystem.OnMachineSabotaged(machine.id, saboteur.id);
+                    }
                 }
             }
         }

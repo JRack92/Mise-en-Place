@@ -13,6 +13,7 @@ namespace MiseEnPlace.Data
         public EmployeeLevel level;
         public bool isSaboteur = false;  // Indica si el empleado es un saboteador
         public float sabotageChance = 0.05f; // Probabilidad base de sabotaje por hora
+        public float suspicion = 0f; // Nivel de sospecha del empleado
 
         public float GetSalary()
         {

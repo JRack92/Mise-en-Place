@@ -2,12 +2,12 @@ using MiseEnPlace.Core;
 using MiseEnPlace.Data;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace MiseEnPlace.Systems
 {
     public class SabotageSystem : GSystem
     {
-
         private float _sabotageTimer = 0f;
         private float _checkInterval = 60f; // Verifica cada 60 segundos
 
@@ -40,7 +40,7 @@ namespace MiseEnPlace.Systems
             if (machines.Count == 0) return;
 
             // Selecciona una máquina aleatoria funcional
-            List<MachineData> functionalMachines = machines.FindAll(m => m.isFunctional);
+            List<MachineData> functionalMachines = machines.Where(m => m.isFunctional).ToList();
             if (functionalMachines.Count == 0) return;
 
             MachineData targetMachine = functionalMachines[Random.Range(0, functionalMachines.Count)];
@@ -48,8 +48,10 @@ namespace MiseEnPlace.Systems
 
             // Reduce la reputación
             GameManager.Instance.State.reputation = Mathf.Max(0, GameManager.Instance.State.reputation - 10);
-
             Debug.Log($"¡Sabotaje! El empleado {saboteur.id} ha saboteado la máquina {targetMachine.id}.");
+
+            // Aumenta la sospecha del saboteador
+            GameManager.Instance.EmployeeSystem.OnMachineSabotaged(targetMachine.id, saboteur.id);
         }
 
     }
