@@ -2,6 +2,7 @@ using UnityEngine;
 using MiseEnPlace.Data;
 using MiseEnPlace.Utilities;
 using MiseEnPlace.Systems;
+using MiseEnPlace.UI;
 
 namespace MiseEnPlace.Core
 {
@@ -12,6 +13,8 @@ namespace MiseEnPlace.Core
         public EmployeeSystem EmployeeSystem { get; private set; }
         public MachineSystem MachineSystem { get; private set; }
         public SabotageSystem SabotageSystem { get; private set; }
+        public UIManager UIManager { get; private set; }
+
         public GameState State { get; private set; }
 
         void Awake()
@@ -38,6 +41,7 @@ namespace MiseEnPlace.Core
             EmployeeSystem = gameObject.AddComponent<EmployeeSystem>();
             MachineSystem = gameObject.AddComponent<MachineSystem>();
             SabotageSystem = gameObject.AddComponent<SabotageSystem>();
+            UIManager = FindAnyObjectByType<UIManager>();
         }
 
         void OnApplicationQuit()

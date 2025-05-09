@@ -13,5 +13,15 @@ namespace MiseEnPlace.Data
 
         public int reputation;
         public float balance;
+
+        public int GetCountCookEmployees()
+        {
+            return employees.FindAll(e => e.role == EmployeeRole.Cook).Count;
+        }
+
+        public int GetCountWaiterEmployees()
+        {
+            return employees.FindAll(e => e.role == EmployeeRole.Waiter).Count;
+        }
     }
 }

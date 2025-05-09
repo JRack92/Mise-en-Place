@@ -46,6 +46,9 @@ namespace MiseEnPlace.Systems
             GameManager.Instance.State.employees.Add(newCook);
             GameManager.Instance.State.employees.Add(newWaiter);
 
+            GameManager.Instance.UIManager.UISystems.CookBtnSystem.UpdateCount(GameManager.Instance.State.GetCountCookEmployees());
+            GameManager.Instance.UIManager.UISystems.WaiterBtnSystem.UpdateCount(GameManager.Instance.State.GetCountWaiterEmployees());
+
             Debug.Log("Hired employee: " + newCook.id);
             Debug.Log("Hired employee: " + newWaiter.id);
         }
@@ -67,12 +70,17 @@ namespace MiseEnPlace.Systems
         public void OnMachineSabotaged(string machineId, string saboteurId)
         {
             // Increment suspicion for employees when sabotage occurs
-            var state = GameManager.Instance.State;
-            foreach (var emp in state.employees)
+            GameState state = GameManager.Instance.State;
+            foreach (EmployeeData emp in state.employees)
             {
-                if (emp.id == saboteurId) emp.suspicion += 1f;
+                if (emp.id == saboteurId)
+                {
+                    emp.suspicion += 1f;
+                    GameManager.Instance.UIManager.UISystems.AlertSabotage(emp);
+                }
                 else emp.suspicion += 0.1f; // others gain small suspicion
             }
+
             Debug.Log($"Updated suspicion scores after sabotage on machine {machineId} by {saboteurId}.");
         }
 
