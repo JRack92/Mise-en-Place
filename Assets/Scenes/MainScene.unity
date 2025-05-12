@@ -1190,8 +1190,9 @@ GameObject:
   - component: {fileID: 867724010}
   - component: {fileID: 867724009}
   - component: {fileID: 867724008}
+  - component: {fileID: 867724011}
   m_Layer: 5
-  m_Name: Canvas_Coins
+  m_Name: UI Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1280,6 +1281,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &867724011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867724006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1b7c314d8eeb064b814af6b4475afeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _countCointUI: {fileID: 0}
+  _countReputacionUI: {fileID: 0}
 --- !u!1 &993275769
 GameObject:
   m_ObjectHideFlags: 0

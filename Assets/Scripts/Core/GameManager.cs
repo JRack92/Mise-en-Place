@@ -9,7 +9,6 @@ namespace MiseEnPlace.Core
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance { get; private set; }
-
         public EmployeeSystem EmployeeSystem { get; private set; }
         public MachineSystem MachineSystem { get; private set; }
         public SabotageSystem SabotageSystem { get; private set; }
