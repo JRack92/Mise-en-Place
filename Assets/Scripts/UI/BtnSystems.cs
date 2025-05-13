@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace MiseEnPlace.UI
 {
-    public abstract class BtnSystems : MonoBehaviour
+    public abstract class BtnSystems : BtnUI
     {
         [SerializeField]
         private TextMeshProUGUI _title;

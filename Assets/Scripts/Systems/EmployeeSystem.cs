@@ -16,11 +16,16 @@ namespace MiseEnPlace.Systems
             if (GameManager.Instance.State.employees.Count == 0)
             {
                 // Hire a Initial employee
-                HireInitialEmployee();
+                HireInitialEmployee_Test();
             }
+
+            Debug.Log("Total employees: " + GameManager.Instance.State.GetCountEmployees());
+
+            GameManager.Instance.UIManager.UISystems.CookBtnSystem.UpdateCount(GameManager.Instance.State.GetCountCookEmployees());
+            GameManager.Instance.UIManager.UISystems.WaiterBtnSystem.UpdateCount(GameManager.Instance.State.GetCountWaiterEmployees());
         }
 
-        private void HireInitialEmployee()
+        private void HireInitialEmployee_Test()
         {
             // Example: hire a Novato Cook and an Intermedio Waiter
             EmployeeData newCook = new EmployeeData
@@ -80,6 +85,8 @@ namespace MiseEnPlace.Systems
                 }
                 else emp.suspicion += 0.1f; // others gain small suspicion
             }
+
+            GameManager.Instance.UIManager.UIPoints.UpdateCountSabotage();
 
             Debug.Log($"Updated suspicion scores after sabotage on machine {machineId} by {saboteurId}.");
         }
