@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 46f311046d2104da8b56be3d0a49a119, type: 3}
       propertyPath: m_Name
-      value: Employee
+      value: Cook
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -67,7 +67,7 @@ PrefabInstance:
       addedObject: {fileID: 4289858962031486866}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 46f311046d2104da8b56be3d0a49a119, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8108022715490035749}
+      addedObject: {fileID: 8581613724119082536}
   m_SourcePrefab: {fileID: 100100000, guid: 46f311046d2104da8b56be3d0a49a119, type: 3}
 --- !u!137 &3510852168214069360 stripped
 SkinnedMeshRenderer:
@@ -141,7 +141,7 @@ MonoBehaviour:
   MeshR:
   - {fileID: 3510852168214069360}
   Speed: 4
---- !u!114 &8108022715490035749
+--- !u!114 &8581613724119082536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,6 +150,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4277190058305495097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78586d61f41c48f46aa3be2c88374bac, type: 3}
+  m_Script: {fileID: 11500000, guid: 430aff64845247a49bafe0da98bc9188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

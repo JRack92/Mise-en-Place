@@ -10,6 +10,16 @@ namespace MiseEnPlace.Systems
     {
         private float hoursAccumulator = 0f;
 
+        private void Start()
+        {
+            //TODO: Start Game
+            if (GameManager.Instance.State.machines.Count == 0)
+            {
+                //Base
+                GameManager.Instance.State.machines.Add(new MachineData { id = System.Guid.NewGuid().ToString(), baseFailRate = 0.05f });
+            }
+        }
+
         void Update()
         {
             // TODO: check machine failure based on usage and employee levels

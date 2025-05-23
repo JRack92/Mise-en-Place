@@ -27,10 +27,6 @@ namespace MiseEnPlace.Core
                 // Load state
                 State = SaveSystem.Load();
 
-                if (State.machines.Count == 0)
-                {
-                    State.machines.Add(new MachineData { id = System.Guid.NewGuid().ToString(), baseFailRate = 0.05f });
-                }
             }
             else Destroy(gameObject);
         }
