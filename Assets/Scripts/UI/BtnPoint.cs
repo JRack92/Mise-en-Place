@@ -8,6 +8,7 @@ namespace MiseEnPlace.UI
     {
         [SerializeField] private Image _iconImage;
         [SerializeField] private TextMeshProUGUI _countText;
+        [SerializeField] private TextMeshProUGUI _titleText;
 
         public void UpdateCount(float count)
         {
@@ -22,6 +23,14 @@ namespace MiseEnPlace.UI
             if (_iconImage != null)
             {
                 _iconImage.sprite = icon;
+            }
+        }
+
+        public void SetTitle(string title)
+        {
+            if (_titleText != null)
+            {
+                _titleText.text = title;
             }
         }
     }

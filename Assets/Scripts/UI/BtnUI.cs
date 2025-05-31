@@ -12,6 +12,7 @@ namespace MiseEnPlace.UI
             if (_clickSound != null)
             {
                 //AudioManager.Instance.PlaySound(_clickSound);
+                // Ejecuta accion y en lo posible generar un callback
             }
         }
     }
