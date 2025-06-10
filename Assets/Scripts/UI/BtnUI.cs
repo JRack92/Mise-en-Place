@@ -1,4 +1,7 @@
+using MiseEnPlace.Core;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 
 namespace MiseEnPlace.UI
@@ -7,12 +10,32 @@ namespace MiseEnPlace.UI
     {
         [SerializeField] private AudioClip _clickSound;
 
-        public virtual void OnClick()
+        private Button _button;
+
+        private void Awake()
         {
+            _button = GetComponent<Button>();
+
+            if (_button == null)
+            {
+                Debug.LogError("Button component not found on " + gameObject.name);
+                return;
+            }
+
+            _button.onClick.AddListener(PlayClickSound);
+        }
+
+        public void AddEventClick(UnityAction eventClick)
+        {
+            _button.onClick.AddListener(eventClick);
+        }
+
+        public virtual void PlayClickSound()
+        {
+            Debug.Log("Playing click sound for " + gameObject.name);
             if (_clickSound != null)
             {
-                //AudioManager.Instance.PlaySound(_clickSound);
-                // Ejecuta accion y en lo posible generar un callback
+                GameManager.Instance.SoundManager.PlaySound(_clickSound);
             }
         }
     }

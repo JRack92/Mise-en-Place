@@ -7,6 +7,8 @@ namespace MiseEnPlace.UI
         public UISystems UISystems { get; private set; }
         public UIPoints UIPoints { get; private set; }
 
+        public UIPanelEmployee UIPanelEmployee { get; private set; }
+
         private void Awake()
         {
             Initialize();

@@ -13,6 +13,7 @@ namespace MiseEnPlace.Core
         public MachineSystem MachineSystem { get; private set; }
         public SabotageSystem SabotageSystem { get; private set; }
         public UIManager UIManager { get; private set; }
+        public SoundManager SoundManager { get; private set; }
 
         public GameState State { get; private set; }
 
@@ -37,6 +38,7 @@ namespace MiseEnPlace.Core
             MachineSystem = gameObject.AddComponent<MachineSystem>();
             SabotageSystem = gameObject.AddComponent<SabotageSystem>();
             UIManager = FindAnyObjectByType<UIManager>();
+            SoundManager = FindAnyObjectByType<SoundManager>();
         }
 
         void OnApplicationQuit()
