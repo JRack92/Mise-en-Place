@@ -1,22 +1,29 @@
+using MiseEnPlace.Data;
+using MiseEnPlace.Utilities;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace MiseEnPlace.UI
 {
-    public abstract class BtnSystems : BtnUI
+    public class BtnSystems : BtnUI
     {
-        [SerializeField]
         private TextMeshProUGUI _title;
-
-        [SerializeField]
         private Image _icon;
-
-        [SerializeField]
         private TextMeshProUGUI _count;
-
-        [SerializeField]
         private Image _alert;
+
+        [SerializeField] private BtnSystemType _btnSystemType;
+
+        private void Awake()
+        {
+            //load all components
+            _title = transform.Find("Title").GetComponent<TextMeshProUGUI>();
+            _icon = transform.Find("Icon").GetComponent<Image>();
+            _count = transform.Find("Icon/Count").GetComponent<TextMeshProUGUI>();
+            _alert = transform.Find("Icon/Alert").GetComponent<Image>();
+        }
 
         public void ShowAlert()
         {
@@ -24,10 +31,6 @@ namespace MiseEnPlace.UI
             {
                 _alert.gameObject.SetActive(true);
             }
-        }
-
-        public void ShowDashboard()
-        {
         }
 
         public void UpdateCount(int count)

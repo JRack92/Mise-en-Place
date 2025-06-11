@@ -27,10 +27,15 @@ namespace MiseEnPlace.UI
 
         public void AddEventClick(UnityAction eventClick)
         {
+            if (_button == null)
+            {
+                _button = GetComponent<Button>();
+            }
+
             _button.onClick.AddListener(eventClick);
         }
 
-        public virtual void PlayClickSound()
+        public void PlayClickSound()
         {
             Debug.Log("Playing click sound for " + gameObject.name);
             if (_clickSound != null)

@@ -44,8 +44,7 @@ namespace MiseEnPlace.Systems
 
             Debug.Log("Total employees: " + GameManager.Instance.State.GetCountEmployees());
 
-            GameManager.Instance.UIManager.UISystems.CookBtnSystem.UpdateCount(GameManager.Instance.State.GetCountCookEmployees());
-            GameManager.Instance.UIManager.UISystems.WaiterBtnSystem.UpdateCount(GameManager.Instance.State.GetCountWaiterEmployees());
+            GameManager.Instance.UIManager.UISystems.EmployeeBtnSystem.UpdateCount(GameManager.Instance.State.GetCountEmployees());
         }
 
         private void LoadEmployee()

@@ -1,24 +1,28 @@
 using MiseEnPlace.Data;
 using UnityEngine;
+using MiseEnPlace.Core;
 
 namespace MiseEnPlace.UI
 {
     public class UISystems : MonoBehaviour
     {
-        [SerializeField] private CookBtnSystem _cookBtnSystem;
-        [SerializeField] private WaiterBtnSystem _waiterBtnSystem;
+        [SerializeField] private BtnSystems _employeeBtnSystem;
 
-        public CookBtnSystem CookBtnSystem => _cookBtnSystem;
-        public WaiterBtnSystem WaiterBtnSystem => _waiterBtnSystem;
+        public BtnSystems EmployeeBtnSystem => _employeeBtnSystem;
+
+        private void Start()
+        {
+            _employeeBtnSystem.AddEventClick(() =>
+            {
+                GameManager.Instance.UIManager.OpenPanelEmployee();
+            });
+        }
 
         public void AlertSabotage(EmployeeData employeeData)
         {
             if (employeeData == null) return;
 
-            if (employeeData.role == Utilities.EmployeeRole.Cook)
-                _cookBtnSystem.ShowAlert();
-            else
-                _waiterBtnSystem.ShowAlert();
+            _employeeBtnSystem.ShowAlert();
         }
     }
 }

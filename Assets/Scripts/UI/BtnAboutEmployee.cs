@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using MiseEnPlace.Data;
+
+using MiseEnPlace.Utilities;
 
 namespace MiseEnPlace.UI
 {
@@ -12,11 +15,11 @@ namespace MiseEnPlace.UI
 
         private string _employeeId;
 
-        private void Awake()
+        void OnEnable()
         {
-            _image = GetComponent<Image>();
-            _textLevel = transform.Find("TextLevel").GetComponent<TextMeshProUGUI>();
-            _textSalary = transform.Find("TextSalary").GetComponent<TextMeshProUGUI>();
+            _image = this.transform.Find("Pincture").GetComponent<Image>();
+            _textLevel = this.transform.Find("Level/TextLevel").GetComponent<TextMeshProUGUI>();
+            _textSalary = this.transform.Find("Salary/TextSalary").GetComponent<TextMeshProUGUI>();
 
             if (_image == null || _textLevel == null || _textSalary == null)
             {
@@ -31,22 +34,16 @@ namespace MiseEnPlace.UI
         /// <param name="level">Employee Level</param>
         /// <param name="salary">Employee Salary</param>
         /// <param name="employeeId">Employee ID</param>
-        public void SetEmployeeInfo(Sprite sprite, int level, int salary, string employeeId)
+        public void SetEmployeeInfo(EmployeeData employeeData, Sprite sprite)
         {
-            _employeeId = employeeId;
+            _employeeId = employeeData.id;
 
-            if (_image != null)
+            if (sprite != null)
             {
                 _image.sprite = sprite;
             }
-            if (_textLevel != null)
-            {
-                _textLevel.text = "Level: " + level;
-            }
-            if (_textSalary != null)
-            {
-                _textSalary.text = "Salary: $" + salary;
-            }
+            _textLevel.text = employeeData.level.ToFriendlyString();
+            _textSalary.text = employeeData.GetSalary().ToString();
         }
     }
 }
