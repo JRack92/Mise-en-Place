@@ -12,6 +12,9 @@ namespace MiseEnPlace.UI
 
         private Button _button;
 
+        private static Color DefaultSelectedColor = new Color(0.2f, 0.6f, 1f, 1f); // Azul seleccionado
+        private static Color DefaultUnselectedColor = Color.white; // Color no seleccionado
+
         private void Awake()
         {
             _button = GetComponent<Button>();
@@ -33,6 +36,48 @@ namespace MiseEnPlace.UI
             }
 
             _button.onClick.AddListener(eventClick);
+        }
+
+        //como defino una variable opcional para una funcion.
+
+        public void SelectedButton(Color selectedColor)
+        {
+            if (_button == null)
+            {
+                _button = GetComponent<Button>();
+            }
+            // Cambia el color del botón a seleccionado
+            _button.GetComponent<Image>().color = selectedColor;
+        }
+
+        public void SelectedButton()
+        {
+            if (_button == null)
+            {
+                _button = GetComponent<Button>();
+            }
+            // Cambia el color del botón a seleccionado
+            _button.GetComponent<Image>().color = DefaultUnselectedColor;
+        }
+
+        public void UnselectedButton(Color UnselectedColor)
+        {
+            if (_button == null)
+            {
+                _button = GetComponent<Button>();
+            }
+            // Cambia el color del botón a seleccionado
+            _button.GetComponent<Image>().color = UnselectedColor;
+        }
+
+        public void UnselectedButton()
+        {
+            if (_button == null)
+            {
+                _button = GetComponent<Button>();
+            }
+            // Cambia el color del botón a seleccionado
+            _button.GetComponent<Image>().color = DefaultSelectedColor;
         }
 
         public void PlayClickSound()
