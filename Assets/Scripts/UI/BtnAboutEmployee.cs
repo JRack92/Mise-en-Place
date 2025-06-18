@@ -4,6 +4,7 @@ using TMPro;
 using MiseEnPlace.Data;
 
 using MiseEnPlace.Utilities;
+using MiseEnPlace.Core;
 
 namespace MiseEnPlace.UI
 {
@@ -13,7 +14,7 @@ namespace MiseEnPlace.UI
         private TextMeshProUGUI _textLevel;
         private TextMeshProUGUI _textSalary;
 
-        private string _employeeId;
+        private EmployeeData _employeeData;
 
         void OnEnable()
         {
@@ -27,6 +28,14 @@ namespace MiseEnPlace.UI
             }
         }
 
+        private void Awake()
+        {
+            AddEventClick(() =>
+            {
+                GameManager.Instance.UIManager.UIPanelEmployee.LoadDataEmployeeUI(_employeeData);
+            });
+        }
+
         /// <summary>
         /// Sets the employee information for the button.
         /// </summary>
@@ -36,14 +45,15 @@ namespace MiseEnPlace.UI
         /// <param name="employeeId">Employee ID</param>
         public void SetEmployeeInfo(EmployeeData employeeData, Sprite sprite)
         {
-            _employeeId = employeeData.id;
+            _employeeData = employeeData;
 
             if (sprite != null)
             {
                 _image.sprite = sprite;
             }
-            _textLevel.text = employeeData.level.ToFriendlyString();
-            _textSalary.text = employeeData.GetSalary().ToString();
+
+            _textLevel.text = _employeeData.level.ToFriendlyString();
+            _textSalary.text = _employeeData.GetSalary().ToString();
         }
     }
 }

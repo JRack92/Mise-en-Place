@@ -9,6 +9,7 @@ namespace MiseEnPlace.Data
         private const float BASE_SALARY = 100f;
 
         public string id;
+        public string picturePath; // Ruta de la imagen del empleado
         public EmployeeRole role;
         public EmployeeLevel level;
         public bool isSaboteur = false;  // Indica si el empleado es un saboteador
@@ -16,6 +17,12 @@ namespace MiseEnPlace.Data
         public float suspicion = 0f; // Nivel de sospecha del empleado
 
         public SerializableVector3 position; // Posición del empleado en el juego
+
+        public float GetSabogageChance()
+        {
+            //TODO: Esto es una probabilidad base, posiblemente se deba ajustar según otros factores, ya que depende del nivel del empleado y otros factores
+            return sabotageChance * (1 + 0.1f * ((int)level - 1));
+        }
 
         public float GetSalary()
         {

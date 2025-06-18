@@ -15,7 +15,10 @@ namespace MiseEnPlace.UI
         [SerializeField] private BasicButton _btnCookList; //Boton para mostrar la lista de cocineros
         [SerializeField] private BasicButton _btnWaiterList; //Boton para mostrar la lista de camareros
         [SerializeField] private Transform _listDataContainer;
-        [SerializeField] private BtnAboutEmployee _btnAboutEmployeePrefab;
+        private BtnAboutEmployee _btnAboutEmployeePrefab;
+
+        [SerializeField]
+        private EmployeeDataUI _employeeDataUI; // UI para mostrar los detalles del empleado seleccionado
 
         private EmployeeRole _currentEmployeeRole = EmployeeRole.Cook; // Rol de empleado actual para mostrar
 
@@ -44,6 +47,7 @@ namespace MiseEnPlace.UI
                 ShowListEmployee(EmployeeRole.Cook);
                 UpdateRoleButtonColors(EmployeeRole.Cook);
             });
+
             _btnWaiterList.AddEventClick(() =>
             {
                 ShowListEmployee(EmployeeRole.Waiter);
@@ -59,6 +63,17 @@ namespace MiseEnPlace.UI
             ShowListEmployee(EmployeeRole.Cook);
         }
 
+        public void LoadDataEmployeeUI(EmployeeData employeeData)
+        {
+            if (employeeData == null)
+            {
+                Debug.LogError("Employee data is null.");
+                return;
+            }
+            _employeeDataUI.gameObject.SetActive(true);
+            _employeeDataUI.LoadEmployeeData(employeeData);
+        }
+
         /// <summary>Displays a list of employees filtered by the specified role.
         /// </summary>
         /// <remarks>This method clears the current employee list before populating it with employees 
@@ -66,8 +81,6 @@ namespace MiseEnPlace.UI
         /// <param name="employeeRole">The role of employees to display. Only employees matching this role will be shown.</param>
         public void ShowListEmployee(EmployeeRole employeeRole)
         {
-
-
             _currentEmployeeRole = employeeRole;
 
             ClearEmployeeList();
@@ -76,7 +89,7 @@ namespace MiseEnPlace.UI
             {
                 if (employeeData.role == employeeRole)
                 {
-                    InstanceEmployee(employeeData);
+                    InstanceBtnEmployee(employeeData);
                 }
             }
         }
@@ -115,7 +128,7 @@ namespace MiseEnPlace.UI
         /// <remarks>This method creates a button for an employee, sets the employee's information on the
         /// button,  and attaches a click event to display the employee's details in the UI.</remarks>
         /// <param name="employeeData">The data representing the employee to be displayed on the button.</param>
-        public void InstanceEmployee(EmployeeData employeeData)
+        public void InstanceBtnEmployee(EmployeeData employeeData)
         {
             // Busca un botón inactivo en el pool
             BtnAboutEmployee btnAboutEmployee = _btnAboutEmployees.Find(b => !b.gameObject.activeSelf);
@@ -125,10 +138,10 @@ namespace MiseEnPlace.UI
                 btnAboutEmployee = Instantiate(_btnAboutEmployeePrefab, _listDataContainer);
                 _btnAboutEmployees.Add(btnAboutEmployee);
 
-                btnAboutEmployee.AddEventClick(() =>
-                {
-                    // Mostrar detalles del empleado en la UI
-                });
+                //btnAboutEmployee.AddEventClick(() =>
+                //{
+
+                //});
             }
             else
             {
