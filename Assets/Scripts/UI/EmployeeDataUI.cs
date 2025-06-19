@@ -5,6 +5,7 @@ using MiseEnPlace.Data;
 using Mono.Cecil;
 using MiseEnPlace.Utilities;
 using MiseEnPlace.Core;
+using System.IO;
 
 namespace MiseEnPlace.UI
 {
@@ -19,7 +20,7 @@ namespace MiseEnPlace.UI
 
         private EmployeeData _currentEmployeeData; // Datos del empleado actual
 
-        private const string PICTURE_DEFAUT_PATH = "Sprites/Employee/CookPicturePH/"; // Ruta base de las imágenes de los empleados
+        private const string PICTURE_DEFAUT_PATH = "Sprites/Employee/CookPicturePH"; // Ruta base de las imágenes de los empleados
 
         private void Awake()
         {
@@ -43,9 +44,9 @@ namespace MiseEnPlace.UI
                 return;
             }
 
-            Debug.Log(string.IsNullOrEmpty(employeeData.picturePath) ? PICTURE_DEFAUT_PATH : employeeData.picturePath);
+            string picturePath = string.IsNullOrEmpty(employeeData.picturePath) ? PICTURE_DEFAUT_PATH : employeeData.picturePath;
 
-            _employeePicture.sprite = Resources.Load(string.IsNullOrEmpty(employeeData.picturePath) ? PICTURE_DEFAUT_PATH : employeeData.picturePath) as Sprite;
+            _employeePicture.sprite = Resources.Load<Sprite>(picturePath);
             _employeeRoleText.text = employeeData.role.ToFriendlyString();
             _employeeLevelText.text = employeeData.level.ToFriendlyString();
             _employeeSabotageText.text = employeeData.GetSabogageChance().ToString();
