@@ -10,11 +10,12 @@ namespace MiseEnPlace.Data
 
         public string id;
         public string picturePath; // Ruta de la imagen del empleado
-        public EmployeeRole role;
-        public EmployeeLevel level;
+        public EmployeeRole role; // Rol del empleado (Cocinero, Camarero, etc.)
+        public EmployeeLevel level; // Nivel del empleado (1, 2, 3, etc.)
         public bool isSaboteur = false;  // Indica si el empleado es un saboteador
         public float sabotageChance = 0.05f; // Probabilidad base de sabotaje por hora
         public float suspicion = 0f; // Nivel de sospecha del empleado
+        public bool isHired = false; // Indica si el empleado ha sido contratado
 
         public SerializableVector3 position; // Posición del empleado en el juego
 

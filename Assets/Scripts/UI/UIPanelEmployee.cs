@@ -3,7 +3,6 @@ using MiseEnPlace.Data;
 using MiseEnPlace.Utilities;
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -11,32 +10,50 @@ namespace MiseEnPlace.UI
 {
     public class UIPanelEmployee : MonoBehaviour
     {
-        [SerializeField] private BasicButton _btnExit;
-        [SerializeField] private BasicButton _btnCookList; //Boton para mostrar la lista de cocineros
-        [SerializeField] private BasicButton _btnWaiterList; //Boton para mostrar la lista de camareros
-        [SerializeField] private Transform _listDataContainer;
-        private BtnAboutEmployee _btnAboutEmployeePrefab;
+        private RectTransform _containerLIstBtnAboutEmployee; // Contenedor de los botones de empleados
 
-        [SerializeField]
-        private EmployeeDataUI _employeeDataUI; // UI para mostrar los detalles del empleado seleccionado
+        private BasicButton _btnExit; // Botón para cerrar el panel de empleados
+        private BasicButton _btnCookList; //Boton para mostrar la lista de cocineros
+        private BasicButton _btnWaiterList; //Boton para mostrar la lista de camareros
+        private BtnAboutEmployee _btnAboutEmployeePrefab; // Prefab del botón que muestra información sobre el empleado
+
+        private RectTransform _panelListEmployees; // Panel que contiene la lista de empleados y sus detalles
+        private UIEmployeeData _employeeDataUI; // UI para mostrar los detalles del empleado seleccionado
 
         private EmployeeRole _currentEmployeeRole = EmployeeRole.Cook; // Rol de empleado actual para mostrar
 
         private Action OnEmployeeListSelected;
 
-        //lista para ser usada en un pool de objetos o para almacenar los botones de empleados
-        private List<BtnAboutEmployee> _btnAboutEmployees = new List<BtnAboutEmployee>();
+        private List<BtnAboutEmployee> _btnAboutEmployees = new List<BtnAboutEmployee>(); //lista para ser usada en un pool de objetos o para almacenar los botones de empleados
 
-        private void OnEnable()
+        private void LoadElementsUI()
         {
+            if (_btnExit == null)
+                _btnExit = this.transform.Find("PanelListEmployees/ExitButton").GetComponent<BasicButton>();
+
+            if (_btnCookList == null)
+                _btnCookList = this.transform.Find("PanelListEmployees/PanelMenu/Cook").GetComponent<BasicButton>();
+
+            if (_btnWaiterList == null)
+                _btnWaiterList = this.transform.Find("PanelListEmployees/PanelMenu/Waiter").GetComponent<BasicButton>();
+
+            if (_panelListEmployees == null)
+                _panelListEmployees = this.transform.Find("PanelListEmployees").GetComponent<RectTransform>();
+
+            if (_containerLIstBtnAboutEmployee == null)
+                _containerLIstBtnAboutEmployee = this.transform.Find("PanelListEmployees/ListBtnAboutEmployee").GetComponent<RectTransform>();
+
+            if (_employeeDataUI == null)
+                _employeeDataUI = this.transform.Find("EmployeeDataUI").GetComponent<UIEmployeeData>();
+
             if (_btnAboutEmployeePrefab == null)
-            {
                 _btnAboutEmployeePrefab = Resources.Load<BtnAboutEmployee>("Prefabs/UI/BtnAboutEmployee");
-            }
         }
 
         private void Awake()
         {
+            LoadElementsUI();
+
             _btnExit.AddEventClick(() =>
             {
                 GameManager.Instance.UIManager.ClosePanelEmployee();
@@ -63,6 +80,11 @@ namespace MiseEnPlace.UI
             ShowListEmployee(EmployeeRole.Cook);
         }
 
+        public void ShowUIControllers(bool value)
+        {
+            _panelListEmployees.gameObject.SetActive(value);
+        }
+
         public void LoadDataEmployeeUI(EmployeeData employeeData)
         {
             if (employeeData == null)
@@ -71,6 +93,7 @@ namespace MiseEnPlace.UI
                 return;
             }
             _employeeDataUI.gameObject.SetActive(true);
+            ShowUIControllers(false);
             _employeeDataUI.LoadEmployeeData(employeeData);
         }
 
@@ -135,7 +158,7 @@ namespace MiseEnPlace.UI
 
             if (btnAboutEmployee == null)
             {
-                btnAboutEmployee = Instantiate(_btnAboutEmployeePrefab, _listDataContainer);
+                btnAboutEmployee = Instantiate(_btnAboutEmployeePrefab, _containerLIstBtnAboutEmployee);
                 _btnAboutEmployees.Add(btnAboutEmployee);
 
                 //btnAboutEmployee.AddEventClick(() =>
@@ -145,7 +168,7 @@ namespace MiseEnPlace.UI
             }
             else
             {
-                btnAboutEmployee.transform.SetParent(_listDataContainer, false);
+                btnAboutEmployee.transform.SetParent(_containerLIstBtnAboutEmployee, false);
             }
 
             btnAboutEmployee.gameObject.SetActive(true);
